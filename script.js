@@ -11,7 +11,7 @@ function showScreen(screenId) {
 
 // ===== Breed Recognition Logic =====
 let model;
-const labels = ["Sahiwal", "Gir", "Red Sindhi", "Tharparkar", "Murrah"]; // update with your dataset labels
+const labels = ["Sahiwal", "Gir", "Red Sindhi", "Tharparkar", "Murrah","Mehsana","Jaffarabadi"]; // update with your dataset labels
 
 // Load TF.js model
 async function loadModel() {
@@ -330,6 +330,7 @@ if (voiceToggle && voiceBtn) {
     speak(active ? "Voice assistant enabled" : "Voice assistant disabled");
   });
 }
+
 
 
 
