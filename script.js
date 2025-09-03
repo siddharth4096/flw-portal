@@ -44,7 +44,7 @@ async function startCamera() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
       video: {
-        facingMode: { exact: "environment" } // 👉 force rear camera
+        facingMode: "environment" 
       },
       audio: false
     });
@@ -330,6 +330,7 @@ if (voiceToggle && voiceBtn) {
     speak(active ? "Voice assistant enabled" : "Voice assistant disabled");
   });
 }
+
 
 
 
