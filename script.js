@@ -165,11 +165,11 @@ function enableVoiceAssistant() {
 }
 
 // Breed Recognition Capture (stub)
-document.querySelectorAll(".capture-button").forEach(btn => {
-    btn.addEventListener("click", () => {
-        alert("Capturing image and sending to AI model... (stub)");
-    });
-});
+// document.querySelectorAll(".capture-button").forEach(btn => {
+//     btn.addEventListener("click", () => {
+//         alert("Capturing image and sending to AI model... (stub)");
+//     });
+// });
 
 // SOS Button
 document.querySelectorAll(".sos-button").forEach(btn => {
@@ -330,6 +330,7 @@ if (voiceToggle && voiceBtn) {
     speak(active ? "Voice assistant enabled" : "Voice assistant disabled");
   });
 }
+
 
 
 
