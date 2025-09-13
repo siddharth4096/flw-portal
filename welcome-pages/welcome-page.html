@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Breed Recognition System</title>
+  <link rel="stylesheet" href="welcome-page-style.css" />
+  <script defer src="welcome-page-script.js"></script>
+  
+   <!--Linking Loader files -->
+  <link rel="stylesheet" href="loader.css">
+  <script defer src="loader.js"></script>
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <p>Loading, please wait...</p>
+  </div>
+
+<!-- Page Content (hidden until load finishes) -->
+<div id="content" style="display:none;">
+
+
+  <!-- Header -->
+  <header class="fade-down">
+    <h1>Breed Recognition</h1>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <!-- <a href="javascript:void(0)" onclick="toggleLogin()">Login</a> -->
+    </nav>
+    <!-- Network Status --> 
+    <div class="status-wrapper">
+      <div id="network-status" class="status-indicator">Checking...</div>
+    </div>
+    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+  </header>
+
+  <!-- Hero / Home Section -->
+  <section id="home" class="hero fade-up">
+    <h2>AI-Powered Cattle & Buffalo Breed Recognition</h2>
+    <p>
+      Identify breeds instantly with AI, offline-first support, and BPA integration.  
+      Designed for FLWs, Vets, and Admins with multilingual voice navigation.
+    </p>
+    <div class="buttons">
+      <button class="btn" onclick="window.location.href='flw-login-page.html'">
+        <i class="fas fa-user"></i> FLW Portal
+      </button>
+      <button class="btn" onclick="window.location.href='vet-login-page.html'">
+        <i class="fas fa-stethoscope"></i> Vet Portal
+      </button>
+      <button class="btn" onclick="window.location.href='admin-login-page.html'">
+        <i class="fas fa-user-shield"></i> Admin Portal
+      </button>
+      <!-- Voice Assist Button -->
+      <button class="btn voice-btn" onclick="openLangPopup()" title="Click to Speak">
+        <i class="fas fa-microphone"></i> Voice Assist
+      </button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="info-section  reveal fade-up">
+    <h2>About the Project</h2>
+    <p>
+      Misclassification of cattle and buffalo breeds is a major challenge in livestock management.  
+      Farmers often face difficulties due to lack of awareness and proper tools, which affects  
+      productivity, government schemes, and accurate record-keeping.
+    </p>
+    <p>
+      Our system solves this by integrating <b>Artificial Intelligence with Bharat Pashudhan App (BPA)</b>,  
+      enabling breed identification through images — even offline in rural areas. With explainable AI,  
+      multilingual voice guidance, and BPA-ready dashboards, the solution is designed to be farmer-friendly,  
+      vet-efficient, and government-ready.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="fade-up">
+    <p>© 2025 Breed Recognition | Smart India Hackathon Project</p>
+  </footer>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="toggleLogin()">&times;</span>
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <select id="role" required>
+          <option value="">Select Role</option>
+          <option value="flw">FLW</option>
+          <option value="vet">Vet</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Language Selection Modal -->
+  <div id="langModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeLangPopup()">&times;</span>
+      <h2>Select Language</h2>
+      <select id="language" class="language-select">
+        <option value="en">🌐 English</option>
+        <option value="hi">🇮🇳 हिंदी</option>
+        <option value="as">🌾 অসমীয়া</option>
+      </select>
+      <button class="btn" onclick="startVoiceAssist()">Start</button>
+    </div>
+  </div>
+
+ </div> <!-- end content -->
+
+
+</body>
+</html>
