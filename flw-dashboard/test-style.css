@@ -1,0 +1,1547 @@
+/* General Body and Main Layout */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(to bottom, #f9fbff, #eaf3ff);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.app-container {
+    padding: 20px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(90deg, #1976D2, #2196F3);
+     color: #fff;
+    border-bottom: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.network-status {
+    color: #4CAF50;
+    font-size: 1.2rem;
+}
+
+.hamburger-menu {
+    font-size: 1.4rem;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Dashboard Cards */
+.welcome-message {
+    font-size: 1.5rem;
+    font-weight: 600;
+     color: #1976D2;
+    margin-bottom: 25px;
+}
+
+.main-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:active {
+    transform: scale(0.98);
+}
+
+.card i {
+    font-size: 2.5rem;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    color: #333;
+}
+
+/* Specific Screen Styles */
+
+/* Camera & QR Scanner Placeholders */
+.camera-placeholder, .qr-scanner-placeholder {
+    background-color: #000;
+    height: 300px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.camera-overlay, .qr-overlay {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border: 2px dashed #4CAF50;
+    border-radius: 10px;
+}
+
+.overlay-text {
+    color: #fff;
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+/* Buttons */
+.action-button, .capture-button, .sos-button, .back-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 10px;
+}
+
+.action-button {
+    background-color: #1976D2;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.action-button.secondary {
+    background: #fff;
+   color: #1976D2;
+     border: 1px solid #1976D2;
+}
+
+.sos-button {
+    background-color: #FF5252;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.back-button {
+    background-color: transparent;
+    color: #555;
+    border: 1px solid #ccc;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+.back-button i {
+    margin-right: 5px;
+}
+
+/* Vaccination Tracker List */
+.cattle-list .cattle-entry {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.status-badge {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.status-badge.green { background-color: #4CAF50; }
+.status-badge.yellow { background-color: #FFC107; }
+.status-badge.red { background-color: #F44336; }
+
+/* Progress & Rewards */
+.progress-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card p {
+    margin: 0 0 5px 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.stat-card span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.badges-container {
+    margin-bottom: 20px;
+}
+
+.badge {
+    background-color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.leaderboard ol {
+    padding-left: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.leaderboard li {
+    margin-bottom: 5px;
+}
+
+/* Tasks & Alerts */
+.checklist {
+    list-style: none;
+    padding: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.checklist li {
+    margin-bottom: 10px;
+}
+
+.alert-item {
+    background-color: #fff8e1;
+    border: 1px solid #ffeb3b;
+    color: #ffc107;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert-item.warning {
+    background-color: #fff3e0;
+    border-color: #ff9800;
+    color: #ff9800;
+}
+
+/* Settings */
+.settings-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.settings-option i {
+    font-size: 1.2rem;
+    color: #4CAF50;
+}
+
+/* Assign different colours by nth-child (order in HTML) */
+.settings-option:nth-child(1) i { color: #42A5F5; } /* Profile/User */
+.settings-option:nth-child(2) i { color: #FB8C00; } /* Language */
+.settings-option:nth-child(3) i { color: #8E24AA; } /* Notifications */
+.settings-option:nth-child(4) i { color: #26A69A; } /* Privacy/Security */
+.settings-option:nth-child(5) i { color: #43A047; } /* General/Others */
+
+
+
+
+
+
+
+
+status-indicator.online {
+  background: #22c55e;
+  box-shadow: 0 0 15px #22c55e, 0 0 30px #22c55e77;
+  animation: glow-green 2s infinite alternate;
+}
+status-indicator.offline {
+  background: #ef4444;
+  box-shadow: 0 0 15px #ef4444, 0 0 30px #ef444477;
+  animation: glow-red 2s infinite alternate;
+}
+
+@keyframes glow-green {
+  from { box-shadow: 0 0 10px #22c55e, 0 0 20px #22c55e77; }
+  to   { box-shadow: 0 0 20px #22c55e, 0 0 40px #22c55eaa; }
+}
+
+@keyframes glow-red {
+  from { box-shadow: 0 0 10px #ef4444, 0 0 20px #ef444477; }
+  to   { box-shadow: 0 0 20px #ef4444, 0 0 40px #ef4444aa; }
+}
+ */
+
+
+
+/* Professional network status bar */
+.status-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 3px 8px;
+   border-radius: 6px;     /* makes it neater */
+  z-index: 2000;
+  display: none; /* hidden by default */
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.status-indicator.online {
+ background-color: rgba(25, 210, 53, 0.8);
+  color: #fff;
+  backdrop-filter: blur(4px); /* adds subtle glass effect */
+}
+
+.status-indicator.offline {
+  background-color: rgba(229, 57, 53, 0.9);
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+
+.status-indicator.show {
+  display: block;
+  animation: slideDown 0.6s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Logout Button */
+.logout-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 20px;
+  background-color: #ff4d4f;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.1s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.logout-button:hover {
+  background-color: #e63946;
+}
+
+.logout-button:active {
+  transform: scale(0.98);
+}
+
+
+
+
+
+
+
+
+
+
+/* 🎤 Voice Assistant Floating Button */
+#voiceBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff4081;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s, background 0.3s;
+  z-index: 2000;
+}
+
+#voiceBtn:hover {
+  transform: scale(1.1);
+  background: #e91e63;
+}
+
+
+
+
+/* ✨ General Fade-in */
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✨ Dashboard Cards Animation */
+.card {
+  /* background: rgba(255,255,255,0.2); */
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+  opacity: 0;
+  animation: cardFade 0.6s ease forwards;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+.card h3 {
+  color: #333;
+}
+
+
+/* Card icons (colour-coded like screenshot buttons) */
+.card:nth-child(1) i { color: #1976D2; }  /* Breed Recognition */
+.card:nth-child(2) i { color: #2E7D32; }  /* Vaccination Tracker */
+.card:nth-child(3) i { color: #EF6C00; }  /* Emergency Vet */
+.card:nth-child(4) i { color: #3949AB; }  /* My Records */
+.card:nth-child(5) i { color: #00897B; }  /* Tasks */
+.card:nth-child(6) i { color: #8E24AA; }  /* Rewards */
+
+
+
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+.card:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes cardFade {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ✨ Button Hover + Ripple */
+button {
+  position: relative;
+  overflow: hidden;
+}
+button::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.5s, height 0.5s, opacity 0.5s;
+}
+button:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+}
+
+/* ✨ Breed Results Animation */
+#breedResults {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+#breedResults.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ✨ Smooth Screen Transition */
+.screen {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.screen.active {
+  display: block;
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Cattle Records polish & responsiveness --- */
+.cr-actions{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin:10px 0}
+.cr-open{display:flex; gap:8px; align-items:center}
+.cr-open input{padding:10px 12px; border-radius:10px; border:none; min-width:240px; max-width:60vw}
+
+.cr-list-card{max-width:980px; margin:14px auto; background:rgba(255,255,255,.2); border-radius:14px; padding:12px}
+.cr-table-wrap{width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:10px; background:#fff}
+.cr-table{width:100%; min-width:720px; border-collapse:collapse; color:#222}
+.cr-table th,.cr-table td{padding:10px 12px; border-bottom:1px solid #eee; text-align:left; font-size:14px; white-space:nowrap}
+.cr-table thead th{background:#f7f7f7; font-weight:700}
+
+/* form + dialog */
+#cr-modal{border:none; border-radius:16px; padding:16px; max-width:620px; width:calc(100% - 24px)}
+.cr-row{display:flex; gap:10px; margin:8px 0; align-items:center}
+.cr-row label{min-width:140px; text-align:left}
+.cr-row input, .cr-row select{flex:1; padding:10px 12px; border-radius:10px; border:none; background:#fff; color:#222}
+.cr-actions-row{display:flex; gap:8px; justify-content:flex-end; margin-top:10px}
+
+#cr-vacc-list{list-style:none; padding-left:0; margin:6px 0 10px}
+#cr-vacc-list li{background:#fff; color:#222; padding:8px 10px; border-radius:8px; margin:6px 0; box-shadow:0 2px 8px rgba(0,0,0,.08)}
+
+/* QR scan area keeps your camera styling */
+.cr-qr-wrap{margin:10px auto; max-width:480px}
+#cr-qr-video{width:100%; border-radius:12px; background:#000}
+
+/* --- Mobile tweaks --- */
+@media (max-width: 600px){
+  .cr-row{flex-direction:column; align-items:stretch}
+  .cr-row label{text-align:left; min-width:0}
+  .cr-open{flex-direction:column; align-items:stretch}
+  .cr-open input{max-width:100%}
+  #cr-modal{width:100vw; max-width:none; border-radius:0; height:100dvh; max-height:100dvh; padding:14px}
+  #cr-modal::backdrop{background:rgba(0,0,0,.35)}
+  .cr-actions-row{justify-content:space-between}
+}
+
+/* Keep buttons interactive & consistent */
+button{min-height:44px; font-size:15px}
+
+
+
+
+/* Consistent button styles for Cattle Records */
+.cr-actions button,
+.cr-actions-row button,
+.cr-table button {
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.cr-actions button:hover,
+.cr-actions-row button:hover,
+.cr-table button:hover {
+  background: #45a049;
+}
+
+.cr-actions button:active,
+.cr-actions-row button:active,
+.cr-table button:active {
+  transform: scale(0.96);
+}
+
+.cr-table button.back-button {
+  background: #ff4d4f;
+  color: #fff;
+}
+
+.cr-table button.back-button:hover {
+  background: #e63946;
+}
+
+
+
+
+
+
+
+
+
+
+/* Stop Scan button styling */
+#cr-qr-wrap .camera-controls button {
+  background: #ff4d4f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#cr-qr-wrap .camera-controls button:hover {
+  background: #e63946;
+}
+
+#cr-qr-wrap .camera-controls button:active {
+  transform: scale(0.95);
+}
+
+
+
+/* Centered QR overlay text */
+#cr-qr-wrap .overlay-text {
+  position: absolute;
+  top: 50%;                  /* vertical center */
+  left: 50%;                 /* horizontal center */
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+
+  max-width: 85%;            /* keep text inside video frame */
+  white-space: normal;       /* allow wrapping */
+  word-wrap: break-word;
+
+  opacity: 1;
+  transition: opacity 1s ease;
+  z-index: 10;
+}
+
+#cr-qr-wrap .overlay-text.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
+
+/* Breed recognition overlay text */
+#breed-recognition-screen .overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  max-width: 85%;
+  white-space: normal;
+  word-wrap: break-word;
+  line-height: 1.4;
+  opacity: 1;
+  transition: opacity 1s ease;
+  z-index: 10;
+}
+
+#breed-recognition-screen .overlay-text.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+
+
+
+/* Badges responsive layout */
+#pr-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+#pr-badges .badge {
+  background: #f1f1f1;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
+  white-space: nowrap;
+  flex: 0 1 auto;
+}
+
+/* Leaderboard responsive */
+#pr-leaderboard {
+  margin: 0;
+  padding-left: 20px;
+}
+
+#pr-leaderboard li {
+  font-size: 14px;
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+
+/* On very small screens */
+@media (max-width: 480px) {
+  #pr-badges .badge {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  #pr-leaderboard li {
+    font-size: 12px;
+  }
+}
+
+
+
+
+.geo-status {
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:14px;
+  background:#f1f1f1;
+  font-size:13px;
+}
+.geo-ok { background:#e8f7ec; }
+.geo-warn { background:#fff3cd; }
+.geo-err { background:#fde2e1; }
+.muted { opacity:0.8; }
+
+
+
+
+/* === Breed result: top-3 confidence bars + mobile-friendly layout === */
+.confidence-list { list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px; }
+.confidence-list li { display:flex;gap:8px;align-items:center; }
+.confidence-list .label { width:28%; min-width:90px; font-weight:600; font-size:0.95rem; color:#0f172a; }
+.confidence-list .barWrap { flex:1; background:#f1f5f9; border-radius:8px; height:18px; overflow:hidden; position:relative; }
+.confidence-list .barFill { height:100%; width:0%; border-radius:8px; background:linear-gradient(90deg,#60a5fa,#3b82f6); transition:width 500ms ease; }
+.confidence-list .pct { width:60px; text-align:right; font-size:0.9rem; color:#334155; }
+
+/* Breed card container */
+#breedResults .breed-card { padding:12px; border-radius:10px; background:#fff; box-shadow:0 6px 18px rgba(15,23,42,0.06); }
+
+/* thumbnail styling */
+#predThumb { width:100%; height:120px; object-fit:cover; border-radius:8px; }
+
+/* small text helpers */
+.small { font-size:0.92rem; color:#334155; }
+.muted { color:#64748b; }
+
+/* Buttons sizing (consistent on mobile) */
+.action-button, .capture-button, button { min-height:44px; font-size:15px; padding:10px 12px; }
+
+/* show animation */
+#breedResults { display:none; opacity:0; transform:translateY(12px); transition:all .35s ease; }
+#breedResults.show { display:block; opacity:1; transform:translateY(0); }
+
+/* responsive: stack left/right on small screens */
+@media (max-width:640px) {
+  #breedResults .breed-top { display:block; }
+  #breedResults .breed-top > div { width:100% !important; display:block; padding:0; }
+  .confidence-list .label { width:40%; min-width:80px; font-size:0.9rem; }
+  .confidence-list .pct { width:54px; font-size:0.85rem; }
+  #predThumb { height:160px; }
+}
+
+/* Accessibility: focus outlines */
+button:focus, input:focus { outline:3px solid rgba(59,130,246,0.18); outline-offset:2px; }
+
+/* small QR canvas styling */
+#resultQR { border-radius:10px; background:#fff; box-shadow:0 6px 14px rgba(2,6,23,0.06); }
+
+
+
+
+
+/* ===== Upload button styling (matches other buttons) ===== */
+.upload-button {
+  display: inline-block;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 10px;
+  min-width: 140px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(15,23,42,0.06);
+}
+.upload-button:active { transform: scale(0.98); }
+
+/* Breed result card (thumbnail + bars) */
+#breedResults { max-width: 520px; margin: 12px auto 0; }
+#breedResults .breed-card { padding:12px; border-radius:10px; background:#fff; box-shadow:0 6px 18px rgba(15,23,42,0.06); }
+#breedResults .thumb { width:100%; height:180px; object-fit:cover; border-radius:8px; display:block; margin-bottom:10px; }
+
+/* Confidence bars (already present in your CSS but ensure spacing) */
+.confidence-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px; }
+.confidence-list li { display:flex; gap:8px; align-items:center; }
+.confidence-list .label { width:30%; min-width:90px; font-weight:600; font-size:0.95rem; color:#0f172a; }
+.confidence-list .barWrap { flex:1; background:#f1f5f9; border-radius:8px; height:18px; overflow:hidden; position:relative; }
+.confidence-list .barFill { height:100%; width:0%; border-radius:8px; background:linear-gradient(90deg,#60a5fa,#3b82f6); transition:width 600ms ease; }
+.confidence-list .pct { width:60px; text-align:right; font-size:0.9rem; color:#334155; }
+
+/* Mobile tweaks: keep thumbnail height manageable on small screens */
+@media (max-width: 420px) {
+  #breedResults .thumb { height:120px; }
+  .upload-button { min-width: 110px; padding:10px 12px; margin-left:6px; }
+  .confidence-list .label { font-size:0.9rem; min-width:75px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Camera controls container: centered, stacked, same width as cards ===== */
+.camera-controls {
+  width: 100%;
+  max-width: 520px;        /* same as breedResults and main content width */
+  margin: 12px auto;       /* center on desktop; keeps padding on mobile */
+  display: flex;
+  flex-direction: column;  /* stack vertically */
+  gap: 12px;               /* consistent spacing between buttons */
+  align-items: stretch;    /* children fill width */
+  padding: 0 12px;         /* small side padding so buttons don't touch edges on tiny screens */
+  box-sizing: border-box;
+}
+
+/* Force label to behave like the buttons (block, full width) */
+.upload-label,
+label[for="uploadInput"] {
+  display: block;          /* IMPORTANT: makes label fill width */
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+  margin: 0;               /* spacing controlled by .camera-controls gap */
+  -webkit-tap-highlight-color: rgba(0,0,0,0); /* mobile tap polish */
+}
+
+/* Capture button – distinct style with hover + animation */
+.capture-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0;
+  background: linear-gradient(135deg, #fdfdfd, #f0f0f0);
+  color: #333;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+
+
+/* subtle ripple effect on click */
+.capture-button::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(76, 175, 80, 0.25);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease, opacity 0.6s ease;
+  opacity: 0;
+}
+.capture-button:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* hover / focus effect */
+.capture-button:hover,
+.capture-button:focus {
+  background: linear-gradient(135deg, #e8f5e9, #dcedc8);
+  color: #2e7d32;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(76,175,80,0.25);
+}
+
+
+
+
+/* small visual variant for upload if you want same green border like earlier */
+.upload-label {
+  background-color: #ffffff;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+  font-weight: 700;
+}
+
+/* keep smaller hover/active effects */
+.capture-button:active,
+.upload-label:active {
+  transform: scale(0.995);
+}
+
+/* Mobile tweak: reduce side padding on very small screens */
+@media (max-width: 420px) {
+  .camera-controls { padding: 0 8px; gap: 10px; }
+  .capture-button { padding: 13px; font-size: 0.98rem; }
+}
+
+
+
+
+
+
+
+
+
+
+/* ---------- Demo sample images ---------- */
+.demo-samples { max-width:520px; margin:10px auto; padding:0 12px; box-sizing:border-box; }
+.sample-grid { display:flex; gap:12px; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+.sample-card { width:48%; background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 6px 18px rgba(2,6,23,0.06); cursor:pointer; text-align:center; transition:transform .18s ease, box-shadow .18s ease; border:1px solid #f0f0f0; }
+.sample-card:focus, .sample-card:hover { transform:translateY(-6px); box-shadow:0 10px 26px rgba(2,6,23,0.09); outline:none; }
+.sample-card img { width:100%; height:120px; object-fit:cover; display:block; }
+.sample-label { padding:8px 10px; font-weight:700; color:#0f172a; }
+
+/* ---------- Prediction card extras (colorful bars) ---------- */
+.prediction-extra { display:flex; gap:12px; flex-direction:column; margin-top:10px; }
+.confidence-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+.confidence-list li { display:flex; gap:10px; align-items:center; }
+.confidence-list .label { min-width:90px; font-weight:700; color:#0f172a; }
+.confidence-list .barWrap { flex:1; background:#eef2ff; border-radius:999px; height:18px; overflow:hidden; display:flex; align-items:center; }
+.confidence-list .barFill { height:100%; width:0%; border-radius:999px; transition:width 700ms cubic-bezier(.2,.9,.3,1); box-shadow: inset 0 -2px 6px rgba(255,255,255,0.12); }
+.confidence-list .pct { width:54px; text-align:right; font-weight:700; color:#334155; }
+
+/* colorful gradient fills for top 3 */
+.barFill.c1 { background: linear-gradient(90deg,#ff9966,#ff5e62); }   /* warm red-orange */
+.barFill.c2 { background: linear-gradient(90deg,#fbc7d4,#9796f0); }   /* pink to purple */
+.barFill.c3 { background: linear-gradient(90deg,#60efbc,#58d5ff); }   /* green to cyan */
+
+/* breed info block */
+.breed-info { background:#fff; border-radius:10px; padding:12px; box-shadow:0 6px 18px rgba(2,6,23,0.06); margin-top:10px; }
+.breed-info h4 { margin:0 0 6px 0; color:#0f172a; }
+.breed-info p { margin:4px 0; color:#374151; font-size:0.95rem; }
+
+/* QR area */
+#qrcode { display:inline-block; background:#fff; padding:10px; border-radius:12px; }
+
+/* small screens: sample card height */
+@media (max-width:520px){
+  .sample-card img { height:90px; }
+  .sample-card { width:100%; }
+  .confidence-list .label { min-width:78px; font-size:0.95rem; }
+}
+
+
+
+
+/* QR container styling — ensure visible under results */
+#qrContainer {
+  background: transparent;
+  padding: 8px;
+  box-sizing: border-box;
+  z-index: 1200;          /* sits above most UI */
+}
+
+/* QR box itself */
+#qrcode {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.08);
+}
+
+/* small payload text */
+#qrPayload { 
+  word-break: break-word;
+  opacity: 0.9;
+}
+
+
+
+
+
+
+/* Style the Add button inside form footer */
+.form-footer .action-button {
+   background-color: #42A5F5; /* medium blue */
+  color: #fff;
+  border: none;
+}
+
+.form-footer .action-button:hover {
+  background-color: #1E88E5; /* darker blue hover */
+}
+
+.form-footer .action-button:active {
+  transform: scale(0.98);
+}
+
+
+
+
+
+
+
+/* 🌐 Language Popup */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.popup h3 {
+  margin-bottom: 15px;
+}
+
+.popup-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.popup-actions button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #4caf50;
+  color: white;
+}
+
+
+
+#ntf-audience {
+  color: #111;
+  font-weight: 600;
+  margin: 10px 0;
+  font-size: 15px;
+  white-space: pre-line;  /* keep line breaks from JS */
+}
+
+
+
+
+/* .feed-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-top: 15px;
+}
+.feed-card h3 {
+  color: #4CAF50;
+  margin-top: 0;
+}
+
+
+
+.feed-reco .action-button {
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.feed-reco .action-button:hover {
+  background-color: #388E3C;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.feed-reco {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+
+.feed-reco h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 10px 0;
+  font-size: 1.05rem;
+  color: #2e7d32;
+}
+.feed-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.feed-list li {
+  list-style: none;
+  background: #f1f8f6;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.feed-list li::before {
+  content: "✔";
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+
+/* Send to Farmer button spacing & style */
+.feed-reco .action-button {
+  margin-top: 18px;          /* space above button */
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  width: 100%;               /* make it full width for balance */
+  font-weight: 600;
+}
+.feed-reco .action-button:hover {
+  background-color: #388E3C;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Welcome title styling */
+.welcome-message {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: left;
+  color: #2e7d32; /* green accent */
+  margin: 0 0 10px 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeInDown 0.8s ease forwards;
+}
+
+/* Subtext already has fadeInUp */
+.welcome-subtext {
+  font-size: 1.05rem;
+   color: #555;
+  margin: 10px 0 24px 0;
+  text-align: center;
+  max-width: 700px;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.4s; /* slight delay after heading */
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+#breed-recognition-screen .overlay-text.warning {
+  background: rgba(255, 77, 77, 0.85);
+  color: #fff;
+}
+
+
+
+
+
+.health-anomaly {
+  font-size: 0.95rem;
+  background: #fee2e2;
+  border: 1px solid #ef4444;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 12px;
+  color: #991b1b;
+}
+.health-anomaly h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+}
+
+
+
+.calendar-section {
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9fafb;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 days a week */
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.calendar-day {
+  height: 60px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.calendar-day.green { background: #d1fae5; color: #065f46; }
+.calendar-day.yellow { background: #fef9c3; color: #92400e; }
+.calendar-day.red { background: #fee2e2; color: #991b1b; }
+.calendar-day.empty { background: transparent; cursor: default; }
+
+
+
+
+
+/* === My Cattle Records Section Buttons === */
+
+/* Primary buttons: Add Record, Save, Edit */
+.cr-actions button,
+.cr-actions-row button,
+.cr-table button {
+  background: #42A5F5; /* medium blue */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 2px 6px rgba(66,165,245,0.25);
+}
+.cr-actions button:hover,
+.cr-actions-row button:hover,
+.cr-table button:hover {
+  background: #1E88E5;
+  transform: translateY(-2px);
+}
+
+/* Secondary / Back button */
+.cr-actions-row .back-button,
+.cr-table button.back-button {
+  background: #fff;
+  color: #42A5F5;
+  border: 2px solid #42A5F5;
+}
+.cr-actions-row .back-button:hover,
+.cr-table button.back-button:hover {
+  background: #E3F2FD;
+}
+
+/* Delete or Critical buttons */
+.cr-table button.delete-button,
+#cr-qr-wrap .camera-controls button {
+  background: #E53935; /* red */
+  color: #fff;
+}
+.cr-table button.delete-button:hover,
+#cr-qr-wrap .camera-controls button:hover {
+  background: #C62828;
+}
+
+/* QR Scan Start (special highlight) */
+#cr-qr-wrap .camera-controls .start-scan {
+  background: #5C6BC0; /* indigo */
+  color: #fff;
+}
+#cr-qr-wrap .camera-controls .start-scan:hover {
+  background: #3F51B5;
+}
+
+
+
+/* === Fix Welcome User Text Colour === */
+.welcome-message {
+  color: #020202 !important;   /* medium blue */
+  font-weight: 700;
+}
+
+
+
+
+/* 🌐 Language Popup Buttons */
+.popup-actions button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #42A5F5;   /* medium blue */
+  color: #fff;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.popup-actions button:hover {
+  background: #1E88E5;   /* darker blue on hover */
+}
+
+
+
+
+
+
+/* === Welcome User Text Animation === */
+.welcome-message {
+  color: #101112 !important;   /* medium blue */
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeSlideIn 1s ease forwards, glowOnce 2s ease 1.2s;
+}
+
+/* Slide + Fade effect */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle glow once */
+@keyframes glowOnce {
+  0%   { text-shadow: 0 0 0px rgba(25,118,210,0); }
+  50%  { text-shadow: 0 0 12px rgba(25,118,210,0.6); }
+  100% { text-shadow: 0 0 0px rgba(25,118,210,0); }
+}
+
+
+
+
+
+/* === Medium Footer (FLW Dashboard) === */
+.app-footer {
+  padding: 6px 10px;          /* smaller padding → medium height */
+  text-align: center;
+  background: #2563eb;        /* medium blue */
+  font-size: 0.8rem;          /* slightly smaller text */
+  color: #ffffff;
+  margin-top: auto;
+  line-height: 1.3;           /* compact line spacing */
+}
+
+
+/* Hide footer when settings screen is shown */
+#settings-screen.active {
+  display: block;
+}
+
+#settings-screen.active ~ .app-footer {
+  display: none;
+}
+
+
+
+
+.app-footer {
+  padding: 8px 12px;
+  text-align: center;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+
+
+
+
+

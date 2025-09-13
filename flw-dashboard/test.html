@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breed Recognition</title>
+    <link rel="stylesheet" href="test-style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50"/>
+
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2563eb">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <script>
+  // 🚨 Block access if not logged in
+  if (!sessionStorage.getItem("isFLWLoggedIn")) {
+    window.location.href = "../welcome-pages/welcome-page.html"; // redirect to welcome page
+  }
+</script>
+
+    <header>
+        <div class="header-left">
+            <h1 class="header-title">PashuSewa</h1>
+        </div>
+
+        <!-- Network Status --> 
+    <div class="status-wrapper">
+      <div id="network-status" class="status-indicator">Checking...</div>
+    </div>
+    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    
+        <!-- <div class="header-right">
+            <span class="network-status"><i class="fa-solid fa-signal"></i></span>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div> -->
+    </header>
+
+    <main class="app-container">
+
+        
+        <div id="dashboard-screen" class="screen active">
+            <h2 class="welcome-message">Welcome, User </h2>
+            <p class="welcome-subtext">👉 Select an option below to get started</p>
+            <div class="main-cards-grid">
+                <div class="card" onclick="showScreen('breed-recognition-screen')">
+                    <i class="fas fa-camera"></i>
+                    <h3>Breed Recognition</h3>
+                </div>
+                <div class="card" onclick="showScreen('vaccination-tracker-screen')">
+                    <i class="fas fa-syringe"></i>
+                    <h3>Vaccination Tracker</h3>
+                </div>
+                <div class="card" onclick="showScreen('emergency-vet-connect-screen')">
+                    <i class="fas fa-phone-volume"></i>
+                    <h3>Emergency Vet Connect</h3>
+                </div>
+                <div class="card" onclick="showScreen('cattle-records-screen')">
+                    <i class="fas fa-qrcode"></i>
+                    <h3>My Cattle Records</h3>
+                </div>
+                <div class="card" onclick="showScreen('tasks-alerts-screen')">
+                    <i class="fas fa-list-check"></i>
+                    <h3>Tasks & Alerts</h3>
+                </div>
+                <div class="card" onclick="showScreen('progress-rewards-screen')">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Progress & Rewards</h3>
+                </div>
+            </div>
+        </div>
+
+    <div id="breed-recognition-screen" class="screen">
+        <div class="camera-placeholder">
+            <video id="camera" autoplay playsinline></video>
+            <canvas id="snapshot" style="display:none;"></canvas>
+            <div class="camera-overlay"></div>
+            <div class="overlay-text"  id="breed-overlay">Align cattle face/body</div>
+        </div>
+
+
+  <div class="camera-controls">
+    <button class="capture-button" onclick="captureAndPredict()">📷 Capture</button>
+
+        <!-- Upload Photo: user-friendly hidden input + visible label-button -->
+    <input id="uploadInput" type="file" accept="image/*" style="display:none" />
+    <label for="uploadInput" class="capture-button upload-label" id="uploadLabel">📁 Upload Photo</label>
+
+  </div>
+
+  <!-- results container (should exist) -->
+  <div class="breed-results" id="breedResults" style="display:none;">
+        <!-- inside #breedResults -->
+        <div id="feed-reco" class="feed-card" style="margin-top:15px; display:none;">
+          <h3>🐄 Feed Recommendation</h3>
+          <p id="feed-result" class="muted">Recommendation will appear here...</p>
+        </div>
+  </div>
+
+  <!-- Confirm + Flag buttons (must have these IDs and be initially hidden) -->
+  <button class="action-button" id="btnConfirmBreed" style="display:none;"  onclick="confirmBreed()">✅ Confirm Breed</button>
+  <button class="action-button secondary" id="btnFlagBreed"  style="display:none;" >🚩 Flag Misclassification</button>
+  <button class="back-button" onclick="showScreen('dashboard-screen')"><i class="fas fa-arrow-left"></i> Back</button>
+</div>
+
+
+ <!-- Vaccination Tracker Screen -->
+
+        <div id="vaccination-tracker-screen" class="screen">
+            <h3>Vaccination Tracker</h3>
+
+            <!-- auto-filled by JS with latest per-animal status -->
+            <div class="cattle-list"  id="vt-list">
+                <!-- <div class="cattle-entry up-to-date">
+                    <div class="status-badge green"></div>
+                    <p>Cattle Name 1 | Last Vaccine: 20/08/2025 | Next Due: 20/11/2025</p>
+                </div>
+                <div class="cattle-entry due-soon">
+                    <div class="status-badge yellow"></div>
+                    <p>Cattle Name 2 | Last Vaccine: 01/07/2025 | Next Due: 01/10/2025</p>
+                </div>
+                <div class="cattle-entry overdue">
+                    <div class="status-badge red"></div>
+                    <p>Cattle Name 3 | Last Vaccine: 15/03/2025 | Overdue</p>
+                </div> -->
+            </div>
+
+
+             <!-- 📅 Vaccination Calendar -->
+
+            <button class="action-button" id="btn-add-vax">Add New Vaccination Record</button>
+            <button class="action-button"  id="btn-notify">Notify All Owners in Village</button>
+            <button class="back-button" onclick="showScreen('dashboard-screen')"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+
+
+        <!-- Add Vaccination Record modal -->
+<dialog id="vax-modal">
+  <form id="vax-form" method="dialog" onsubmit="return false;">
+    <h3>Add Vaccination Record</h3>
+    <div class="cr-row">
+      <label>Animal</label>
+      <select id="vax-animal" required></select>
+    </div>
+    <div class="cr-row">
+      <label>Owner</label>
+      <input id="vax-owner" placeholder="Auto" disabled>
+    </div>
+    <div class="cr-row">
+      <label>Vaccine</label>
+      <select id="vax-name" required>
+        <option>FMD</option>
+        <option>HS</option>
+        <option>PPR</option>
+      </select>
+    </div>
+    <div class="cr-row">
+      <label>Dose #</label>
+      <input id="vax-dose" type="number" min="1" value="1" required>
+    </div>
+    <div class="cr-row">
+    <label>Geo-tag</label>
+    <div id="vax-geo-status" class="geo-status muted">Waiting…</div>
+    </div>
+    <div class="cr-row">
+      <label>Date given</label>
+      <input id="vax-date" type="date" required>
+    </div>
+    <div class="cr-row">
+      <label>Notes</label>
+      <input id="vax-notes" placeholder="Optional">
+    </div>
+    <div class="cr-row">
+      <label>Next due (auto)</label>
+      <input id="vax-nextdue" disabled>
+    </div>
+    <div class="cr-actions-row">
+      <button id="vax-save">💾 Save</button>
+      <button class="back-button" id="vax-cancel">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+
+
+
+<!-- Notify All Owners modal -->
+<dialog id="notify-modal">
+  <form id="notify-form" method="dialog" onsubmit="return false;">
+    <h3>Notify All Owners</h3>
+    <div class="cr-row">
+      <label>Vaccine</label>
+      <select id="ntf-vaccine">
+        <option value="">Any</option>
+        <option>FMD</option>
+        <option>HS</option>
+        <option>PPR</option>
+      </select>
+    </div>
+    <div class="cr-row">
+      <label>Due within (days)</label>
+      <input id="ntf-window" type="number" min="0" value="14">
+    </div>
+    <div class="cr-row">
+      <label>Camp date</label>
+      <input id="ntf-campdate" type="date">
+    </div>
+    <div class="cr-row">
+      <label>Location</label>
+      <input id="ntf-location" placeholder="e.g., Vet Sub-Centre">
+    </div>
+    <div class="cr-row">
+      <label>Message</label>
+      <input id="ntf-template" value="Dear {OwnerName}, {Vaccine} due for {AnimalId} by {DueDate}. Camp on {CampDate} at {Location}.">
+    </div>
+
+    <div class="cr-list-card" style="margin-top:10px;">
+      <h4>Audience Preview</h4>
+      <div id="ntf-audience" class="muted">—</div>
+    </div>
+
+    <div class="cr-actions-row">
+      <button id="ntf-send">📨 Send (demo)</button>
+      <button class="back-button" id="ntf-cancel">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+
+        <div id="emergency-vet-connect-screen" class="screen">
+            <h3>Emergency Vet Connect</h3>
+            <div class="vet-connect-content">
+                <p>For immediate assistance, press the SOS button. We will automatically send your location, cattle details, and contact information to the nearest vet.</p>
+                <button class="sos-button">SOS</button>
+            </div>
+            <button class="back-button" onclick="showScreen('dashboard-screen')"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+
+    <!-- My Cattle Records -->
+    <div id="cattle-records-screen" class="screen">
+            
+      <h2>🐄 My Cattle Records</h2>
+
+  <!-- controls -->
+  <div class="cr-actions">
+    <button onclick="CR.openAdd()">➕ Add New Record</button>
+    <button onclick="CR.startQR()">📷 Scan QR</button>
+    <div class="cr-open">
+      <input id="cr-open-id" placeholder="Enter Animal ID…" />
+      <button onclick="CR.openById()">Open</button>
+    </div>
+    <button class="back-button" onclick="showScreen('dashboard-screen')">⬅ Back</button>
+  </div>
+
+  <!-- QR area (shown only when scanning) -->
+  <div id="cr-qr-wrap" class="cr-qr-wrap" style="display:none;">
+    <div class="camera-placeholder">
+      <video id="cr-qr-video" autoplay playsinline></video>
+      <div class="camera-overlay"></div>
+      <div class="overlay-text">Point to a QR that contains the Animal ID</div>
+    </div>
+    <div class="camera-controls">
+      <button onclick="CR.stopQR()">🛑 Stop Scan</button>
+    </div>
+  </div>
+
+  <!-- list -->
+  <div class="cr-list-card">
+    <h3>All Records</h3>
+    <div id="cr-empty" class="muted" style="display:none;">No records yet. Add one!</div>
+
+      <!-- add this wrapper -->
+    <div class="cr-table-wrap">
+
+    <table class="cr-table">
+      <thead>
+        <tr>
+          <th>ID</th><th>Breed</th><th>Age</th><th>Gender</th><th>Owner</th><th>Updated</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="cr-tbody"></tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- view / edit modal -->
+  <dialog id="cr-modal">
+    <form method="dialog" id="cr-form" onsubmit="return false;">
+      <h3 id="cr-title">Add Record</h3>
+      <input type="hidden" id="cr-id" />
+      <div class="cr-row"><label>Breed</label><input id="cr-breed" required placeholder="e.g., Gir"></div>
+      <div class="cr-row"><label>Age (yrs)</label><input id="cr-age" type="number" min="0" step="0.1"></div>
+      <div class="cr-row"><label>Gender</label>
+        <select id="cr-gender"><option>Female</option><option>Male</option></select>
+      </div>
+      <div class="cr-row"><label>Weight (kg)</label><input id="cr-weight" type="number" min="0" step="0.1"></div>
+      <div class="cr-row"><label>Milk (L/day)</label><input id="cr-milk" type="number" min="0" step="0.1"></div>
+      <div class="cr-row"><label>Owner</label><input id="cr-owner" placeholder="e.g., Ramesh"></div>
+      <div class="cr-row"><label>Phone</label><input id="cr-phone" placeholder="98xxxxxxxx"></div>
+
+      <div id="cr-view-only" style="display:none; margin-top:8px;">
+        <h4>Vaccinations</h4>
+        <ul id="cr-vacc-list"></ul>
+        <div class="cr-row">
+          <input id="cr-vacc-name" placeholder="Vaccine (e.g., FMD)">
+          <input id="cr-vacc-date" type="date">
+          <input id="cr-vacc-notes" placeholder="Notes">
+          <button class="action-button" onclick="CR.addVacc()">Add</button>
+        </div>
+      </div>
+
+      <div class="cr-actions-row">
+        <button  onclick="CR.save()">💾 Save</button>
+        <button class="back-button" onclick="CR.close()">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+  </div>
+
+
+        
+        <div id="tasks-alerts-screen" class="screen">
+            <h3>Tasks & Alerts</h3>
+            <div class="tasks-list">
+                <h4>Daily Checklist</h4>
+                <ul class="checklist">
+                    <li><i class="fas fa-square"></i> 2 cattle pending photo capture.</li>
+                    <li><i class="fas fa-square"></i> 3 vaccinations due this week.</li>
+                </ul>
+            </div>
+            <div class="alerts-list">
+                <h4>Alerts</h4>
+                <div class="alert-item warning">
+                    <i class="fas fa-triangle-exclamation"></i>
+                    <p>Possible FMD outbreak risk in Village X.</p>
+                </div>
+            </div>
+            <button class="back-button" onclick="showScreen('dashboard-screen')"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+
+        <div id="progress-rewards-screen" class="screen">
+            <h3>Progress & Rewards</h3>
+            <div class="progress-stats">
+                <div class="stat-card">
+                    <p>Cattle Registered:</p>
+                    <span>150</span>
+                </div>
+                <div class="stat-card">
+                    <p>Vaccinations Completed:</p>
+                    <span>120</span>
+                </div>
+            </div>
+            <div class="badges-container">
+                <h4>Badges</h4>
+                <!-- <span class="badge">🎖️ Village Champion</span>
+                <span class="badge">🏅 Top Vaccinator</span> -->
+
+                <div id="pr-badges"></div>
+            </div>
+            <div class="leaderboard">
+                <h4>Leaderboard</h4>
+                <!-- <ol>
+                    <li>You</li>
+                    <li>FLW B - 145 pts</li>
+                    <li>FLW C - 130 pts</li>
+                </ol> -->
+                <ol id="pr-leaderboard"></ol>
+            </div>
+            <button class="back-button" onclick="showScreen('dashboard-screen')"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+
+        <div id="settings-screen" class="screen">
+            <h3>Settings</h3>
+            <div class="settings-option"  onclick="openLanguagePopup()">
+                <i class="fas fa-globe"></i>
+                <p>Change Language</p>
+            </div>
+
+
+            <div class="settings-option">
+                <i class="fas fa-microphone"></i>
+                <!-- <p>Enable Voice Assistant</p> -->
+                 <label>
+                    <input type="checkbox" id="voiceAssistantToggle"> Enable Voice Assistant
+                 </label>
+            </div>
+              <button class="reset-button" onclick="resetDemoData()">🔄 Reset Local Data</button>     <!-- temporary button -->
+            <button class="logout-button">Logout</button>
+            <!-- <button class="back-button" onclick="showScreen('dashboard-screen')"><i class="fas fa-arrow-left"></i> Back</button> -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+
+
+
+    <!-- 🌐 Change Language Popup -->
+<div id="languagePopup" class="popup-overlay" style="display:none;">
+  <div class="popup">
+    <h3>Select Language</h3>
+    <select id="languageSelect">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="as">অসমীয়া (Assamese)</option>
+    </select>
+    <div class="popup-actions">
+      <button onclick="applyLanguage()">Apply</button>
+      <button onclick="closeLanguagePopup()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+    <!-- 🎤 Floating Voice Assistant Button -->
+  <button id="voiceBtn" title="Voice Assistant">🎤</button>
+
+
+  <!-- Footer -->
+
+  <footer class="app-footer">
+  <p>🐂 AI-based Breed Recognition System | SIH 2025 Demo</p>
+  <p>Developed by Team MindMorphs | Dhemaji Engineering College</p>
+</footer>
+
+
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("sw.js")
+      .then(reg => console.log("Service Worker registered:", reg))
+      .catch(err => console.log("Service Worker registration failed:", err));
+  }
+</script>
+
+
+
+
+
+<script src="test-script.js"></script>
+
+
+</body>
+</html>
