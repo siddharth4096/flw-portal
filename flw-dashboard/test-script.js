@@ -1294,8 +1294,8 @@ async function captureAndPredict() {
     { label: 'Other', score: Math.floor(1 + Math.random()*10) }
   ];
   // normalize so totals look plausible
-  const sum = demoTop3.reduce((s,it)=>s+it.score,0);
-  demoTop3.forEach(it => it.score = Math.round((it.score / sum) * 100));
+  // const sum = demoTop3.reduce((s,it)=>s+it.score,0);
+  // demoTop3.forEach(it => it.score = Math.round((it.score / sum) * 100));
 
   // 3) 🔹 Confidence-based guided capture (threshold = 85%)
   const top = demoTop3[0];
@@ -1352,10 +1352,10 @@ if (uploadInput) {
         ];
       }
 
-  if (!isGir && !isSahiwal) {
-  const sum = top3.reduce((a,b)=>a+b.score,0);
-  top3.forEach(it => it.score = Math.round((it.score / sum) * 100));
-}
+//   if (!isGir && !isSahiwal) {
+//   const sum = top3.reduce((a,b)=>a+b.score,0);
+//   top3.forEach(it => it.score = Math.round((it.score / sum) * 100));
+// }
 
 
       // 🔹 Confidence-based guided capture (threshold = 85%)
@@ -1797,6 +1797,7 @@ function preloadDemoData() {
 }
 
   
+
 
 
 
