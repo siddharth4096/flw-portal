@@ -1344,23 +1344,8 @@ if (uploadInput) {
           {label:'Red Sindhi', score:7},
           {label:'Gir', score:5}
         ];
-      } else {
-  // Random photo → pick ONE of Gir or Sahiwal as top
-  if (Math.random() > 0.5) {
-    top3 = [
-      {label:'Gir', score: Math.floor(90 + Math.random()*5)},    
-      {label:'Sahiwal', score: Math.floor(40 + Math.random()*20)}, 
-      {label:'Other', score: Math.floor(20 + Math.random()*15)}
-    ];
-  } else {
-    top3 = [
-      {label:'Sahiwal', score: Math.floor(90 + Math.random()*5)}, 
-      {label:'Gir', score: Math.floor(40 + Math.random()*20)},    
-      {label:'Other', score: Math.floor(20 + Math.random()*15)}
-    ];
-  }
-}
-/ Random photo → pick ONE of Gir or Sahiwal as top
+      } 
+
 
 
 
