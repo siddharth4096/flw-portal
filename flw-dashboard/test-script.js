@@ -1289,8 +1289,8 @@ async function captureAndPredict() {
 
   // 2) For demo: produce top3 confidences (you can replace this by real model inference)
   const demoTop3 = [
-    { label: 'Gir', score: Math.floor(50 + Math.random()*40) },
-    { label: 'Sahiwal', score: Math.floor(5 + Math.random()*30) },
+    { label: 'Gir', score: Math.floor(90 + Math.random()*5) },
+    { label: 'Sahiwal', score: Math.floor(85 + Math.random()*10) },
     { label: 'Other', score: Math.floor(1 + Math.random()*10) }
   ];
   // normalize so totals look plausible
@@ -1346,9 +1346,9 @@ if (uploadInput) {
         ];
       } else {
         top3 = [
-          {label:'Gir', score: Math.floor(30 + Math.random()*40)},
-          {label:'Sahiwal', score: Math.floor(10 + Math.random()*30)},
-          {label:'Other', score: Math.floor(5 + Math.random()*20)}
+          {label:'Gir', score: Math.floor(88 + Math.random()*7)},
+          {label:'Sahiwal', score: Math.floor(85 + Math.random()*10)},
+          {label:'Other', score: Math.floor(20 + Math.random()*20)}
         ];
       }
 
@@ -1797,5 +1797,6 @@ function preloadDemoData() {
 }
 
   
+
 
 
