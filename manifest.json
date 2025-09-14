@@ -1,9 +1,9 @@
 {
-   "id": "/index.html",
+  "id": "/flw-portal/flw-dashboard/test.html",
   "name": "Breed Recognition System",
   "short_name": "PashuSeva",
   "description": "AI-powered cattle & buffalo breed recognition system with FLW, Vet, and Admin portals.",
-  "start_url": "/index.html",
+  "start_url": "/flw-portal/flw-dashboard/test.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
@@ -15,4 +15,6 @@
     }
   ]
 }
+
+
 
