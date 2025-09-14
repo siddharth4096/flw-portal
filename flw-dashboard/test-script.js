@@ -243,64 +243,64 @@ document.querySelectorAll(".sos-button").forEach(btn => {
 
 
 
-let lastStatus = null; // keep track of last state
+// let lastStatus = null; 
 
-function showStatus(message, type) {
-  const statusDiv = document.getElementById("network-status");
+// function showStatus(message, type) {
+//   const statusDiv = document.getElementById("network-status");
 
-  // prevent duplicate banners
-  if (lastStatus === type) return;
-  lastStatus = type;
+//   // prevent duplicate banners
+//   if (lastStatus === type) return;
+//   lastStatus = type;
 
-  statusDiv.textContent = message;
-  statusDiv.className = `status-indicator ${type} show`;
+//   statusDiv.textContent = message;
+//   statusDiv.className = `status-indicator ${type} show`;
 
-  // Auto-hide after 4s
-  setTimeout(() => {
-    statusDiv.classList.remove("show");
-    statusDiv.classList.add("hide");
+//   // Auto-hide after 4s
+//   setTimeout(() => {
+//     statusDiv.classList.remove("show");
+//     statusDiv.classList.add("hide");
 
-    // After animation, reset
-    statusDiv.addEventListener("animationend", () => {
-      if (statusDiv.classList.contains("hide")) {
-        statusDiv.style.display = "none";
-        statusDiv.classList.remove("hide");
-      }
-    }, { once: true });
+//     // After animation, reset
+//     statusDiv.addEventListener("animationend", () => {
+//       if (statusDiv.classList.contains("hide")) {
+//         statusDiv.style.display = "none";
+//         statusDiv.classList.remove("hide");
+//       }
+//     }, { once: true });
 
-  }, 4000);
-}
+//   }, 4000);
+// }
 
-async function checkConnection() {
-  try {
-    const response = await fetch("https://httpbin.org/status/204", {
-      method: "HEAD",
-      cache: "no-store"
-    });
+// async function checkConnection() {
+//   try {
+//     const response = await fetch("https://httpbin.org/status/204", {
+//       method: "HEAD",
+//       cache: "no-store"
+//     });
 
-    if (response.ok) {
-      showStatus("🟢 Online Mode", "online");
-    } else {
-      showStatus("🔴 Offline Mode – Data will sync later.", "offline");
-    }
-  } catch (err) {
-    showStatus("🔴 Offline Mode – Data will sync later.", "offline");
-  }
-}
+//     if (response.ok) {
+//       showStatus("🟢 Online Mode", "online");
+//     } else {
+//       showStatus("🔴 Offline Mode – Data will sync later.", "offline");
+//     }
+//   } catch (err) {
+//     showStatus("🔴 Offline Mode – Data will sync later.", "offline");
+//   }
+// }
 
-// Run once
-checkConnection();
+// // Run once
+// checkConnection();
 
-// Check every 8s
-setInterval(checkConnection, 8000);
+// // Check every 8s
+// setInterval(checkConnection, 8000);
 
-// Also listen for events
-window.addEventListener("online", () => {
-  showStatus("🟢 Back online! Syncing pending data...", "online");
-});
-window.addEventListener("offline", () => {
-  showStatus("🔴 You are offline. Data will sync later.", "offline");
-});
+// // Also listen for events
+// window.addEventListener("online", () => {
+//   showStatus("🟢 Back online! Syncing pending data...", "online");
+// });
+// window.addEventListener("offline", () => {
+//   showStatus("🔴 You are offline. Data will sync later.", "offline");
+// });
 
 
 
@@ -1299,7 +1299,7 @@ async function captureAndPredict() {
 
   // 3) 🔹 Confidence-based guided capture (threshold = 85%)
   const top = demoTop3[0];
-  if (top.score < 85) {
+  if (top.score < 60) {
     const overlay = document.getElementById("breed-overlay");
     overlay.textContent = "⚠️ Low confidence (<85%). Please retake photo (better lighting/angle).";
     overlay.classList.add("warning");
@@ -1360,7 +1360,7 @@ if (uploadInput) {
 
       // 🔹 Confidence-based guided capture (threshold = 85%)
       const top = top3[0];
-      if (top.score < 85) {
+      if (top.score < 50) {
         const overlay = document.getElementById("breed-overlay");
         overlay.textContent = `⚠️ Low confidence (${top.score}%). Please upload a clearer photo.`;
         overlay.classList.add("warning");
@@ -1797,4 +1797,5 @@ function preloadDemoData() {
 }
 
   
+
 
