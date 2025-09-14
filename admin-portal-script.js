@@ -30,7 +30,7 @@ document.getElementById("flwLoginForm").addEventListener("submit", function(e) {
   if (flwId && password) {
     alert(`✅ Logged in as ADMIN ID: ${flwId}`);
     sessionStorage.setItem("isAdminLoggedIn", "true");   // ✅ store login flag
-    window.location.href = "../admin-dashboard/index.html";    //need changes here
+    window.location.href = "admin-dashboard/index.html";    //need changes here
   } else {
     alert("⚠️ Please enter valid ADMIN ID and Password!");
   }
@@ -42,3 +42,4 @@ function demoLogin() {
   sessionStorage.setItem("isAdminLoggedIn", "true");   // ✅ store login flag
   window.location.href = "../admin dashboard/index.html";    //need changes here
 }
+
