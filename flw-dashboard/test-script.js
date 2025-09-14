@@ -1344,13 +1344,21 @@ if (uploadInput) {
           {label:'Red Sindhi', score:7},
           {label:'Gir', score:5}
         ];
-      } else {
-        top3 = [
-          {label:'Gir', score: Math.floor(88 + Math.random()*7)},
-          {label:'Sahiwal', score: Math.floor(85 + Math.random()*10)},
-          {label:'Other', score: Math.floor(20 + Math.random()*20)}
-        ];
-      }
+      } // Random photo → pick ONE of Gir or Sahiwal as top
+if (Math.random() > 0.5) {
+  top3 = [
+    {label:'Gir', score: Math.floor(90 + Math.random()*5)},    // high
+    {label:'Sahiwal', score: Math.floor(40 + Math.random()*20)}, // moderate
+    {label:'Other', score: Math.floor(20 + Math.random()*15)}   // low
+  ];
+} else {
+  top3 = [
+    {label:'Sahiwal', score: Math.floor(90 + Math.random()*5)}, // high
+    {label:'Gir', score: Math.floor(40 + Math.random()*20)},    // moderate
+    {label:'Other', score: Math.floor(20 + Math.random()*15)}   // low
+  ];
+}
+
 
 //   if (!isGir && !isSahiwal) {
 //   const sum = top3.reduce((a,b)=>a+b.score,0);
@@ -1797,6 +1805,7 @@ function preloadDemoData() {
 }
 
   
+
 
 
 
