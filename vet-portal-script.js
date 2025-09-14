@@ -30,7 +30,7 @@ document.getElementById("flwLoginForm").addEventListener("submit", function(e) {
   if (flwId && password) {
     alert(`✅ Logged in as VET ID: ${flwId}`);
     sessionStorage.setItem("isVetLoggedIn", "true");   // ✅ store login flag
-    window.location.href = "../vet-dashboard/test.html";    //need changes here
+    window.location.href = "vet-dashboard/test.html";    //need changes here
   } else {
     alert("⚠️ Please enter valid VET ID and Password!");
   }
@@ -40,5 +40,6 @@ document.getElementById("flwLoginForm").addEventListener("submit", function(e) {
 function demoLogin() {
   alert("🚀 Demo Mode Activated!\nYou can explore the FLW Portal without credentials.");
   sessionStorage.setItem("isVetLoggedIn", "true");   // ✅ store login flag
-  window.location.href = "../vet-dashboard/test.html";
+  window.location.href = "vet-dashboard/test.html";
 }
+
